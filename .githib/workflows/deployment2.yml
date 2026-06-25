@@ -1,0 +1,39 @@
+name: deployment 1
+on: push
+jobs:
+  Lint:
+    runs-on: macos-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v7.0.0
+      - name: install dependencies
+        run: npm ci
+      - name: Lint
+        run: npm run lint
+  Test:
+    steps:
+      - name: Get code
+        uses: actions/checkout@v7.0.0
+      - name: install dependencies
+        run: npm ci
+      - name: test
+        run: npm test
+  Build:
+    runs-on: macos-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v7.0.0
+      - name: install dependencies
+        run: npm ci
+      - name: Lint
+      - name: Build Project
+        run: npm run build
+  Deploy:
+    runs-on: macos-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v7.0.0
+      - name: install dependencies
+        run: npm ci
+      - name: Deploy
+        run: echo "Deploying the project..."
