@@ -11,6 +11,7 @@ jobs:
       - name: Lint
         run: npm run lint
   Test:
+    needs: Lint
     runs-on: macos-latest
     steps:
       - name: Get code
@@ -20,6 +21,7 @@ jobs:
       - name: test
         run: npm test
   Build:
+    needs: Test
     runs-on: macos-latest
     steps:
       - name: Get code
@@ -29,6 +31,7 @@ jobs:
       - name: Build Project
         run: npm run build
   Deploy:
+    needs: Build
     runs-on: macos-latest
     steps:
       - name: Get code
